@@ -1,8 +1,8 @@
 {
     "manifestVersion": 1,
-    "id": "owasp-zap-scan-psg",
+    "id": "owasp-zap-scan-acs",
     "name": "Owasp Zap Scan",
-    "publisher": "solucionespsg",
+    "publisher": "AdvantageCS",
     "version": "#{Version}",
     "public": true,
     "targets": [
@@ -42,16 +42,16 @@
     },
     "links": {
         "getstarted": {
-            "uri": "https://github.com/pablosguajardo/owasp-zap-scanner/wiki"
+            "uri": "https://github.com/AdvantageCS/owasp-zap-scanner/wiki"
         },
         "support": {
-            "uri": "https://github.com/pablosguajardo/owasp-zap-scanner/issues"
+            "uri": "https://github.com/AdvantageCS/owasp-zap-scanner/issues"
         },
         "repository": {
-            "uri": "https://github.com/pablosguajardo/owasp-zap-scanner"
+            "uri": "https://github.com/AdvantageCS/owasp-zap-scanner"
         },
         "issues": {
-            "uri": "https://github.com/pablosguajardo/owasp-zap-scanner/issues"
+            "uri": "https://github.com/AdvantageCS/owasp-zap-scanner/issues"
         }        
     },
     "branding": {
@@ -60,7 +60,7 @@
     },
     "repository": {
         "type": "git",
-        "uri": "https://github.com/pablosguajardo/owasp-zap-scanner"
+        "uri": "https://github.com/AdvantageCS/owasp-zap-scanner"
     },
     "files": [
         {

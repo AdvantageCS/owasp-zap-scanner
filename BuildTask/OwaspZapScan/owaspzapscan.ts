@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 
 import * as path from 'path';
-import * as Task from 'vsts-task-lib';
+import * as Task from 'azure-pipelines-task-lib';
 
 import { RequestService } from './classes/RequestService';
 import { ScanResult } from './interfaces/types/ScanResult';
@@ -27,25 +27,25 @@ async function run(): Promise<string> {
         try {
             const taskInputs: TaskInput = new TaskInput();
             /* Get the required inputs */
-            taskInputs.ZapApiUrl = Task.getInput('ZapApiUrl', true);
-            taskInputs.ZapApiKey = Task.getInput('ZapApiKey', true);
-            taskInputs.TargetUrl = Task.getInput('TargetUrl', true);
+            taskInputs.ZapApiUrl = Task.getInput('ZapApiUrl', true)!;
+            taskInputs.ZapApiKey = Task.getInput('ZapApiKey', true)!;
+            taskInputs.TargetUrl = Task.getInput('TargetUrl', true)!;
             taskInputs.ClearSession = Task.getBoolInput('ClearSession');
             taskInputs.NewContext = Task.getBoolInput('NewContext');
-            taskInputs.NewContextName = Task.getInput('NewContextName');
+            taskInputs.NewContextName = Task.getInput('NewContextName')!;
 
             /* Open Api Scan Options */
             taskInputs.ExecuteOpenApiScan = Task.getBoolInput('ExecuteOpenApiScan');
-            taskInputs.OpenApiFile = Task.getInput('OpenApiFile');
-            taskInputs.OpenApiUrl = Task.getInput('OpenApiUrl');
-            taskInputs.OpenApiHostOverride = Task.getInput('OpenApiHostOverride');
-            taskInputs.OpenApiContextId = Task.getInput('OpenApiContextId');
-            taskInputs.ContinueOnUrlError = Task.getInput('ContinueOnUrlError');
+            taskInputs.OpenApiFile = Task.getInput('OpenApiFile')!;
+            taskInputs.OpenApiUrl = Task.getInput('OpenApiUrl')!;
+            taskInputs.OpenApiHostOverride = Task.getInput('OpenApiHostOverride')!;
+            taskInputs.OpenApiContextId = Task.getInput('OpenApiContextId')!;
+            taskInputs.ContinueOnUrlError = Task.getInput('ContinueOnUrlError')!;
 
             /* Ajax Spider Scan Options */
             taskInputs.ExecuteAjaxSpiderScan = Task.getBoolInput('ExecuteAjaxSpiderScan');
             taskInputs.AjaxInScope = Task.getBoolInput('AjaxInScope');
-            taskInputs.AjaxContextName = Task.getInput('AjaxContextName');
+            taskInputs.AjaxContextName = Task.getInput('AjaxContextName')!;
             taskInputs.AjaxSubTreeOnly = Task.getBoolInput('AjaxSubTreeOnly');
 
 
@@ -53,30 +53,30 @@ async function run(): Promise<string> {
             taskInputs.ExecuteSpiderScan = Task.getBoolInput('ExecuteSpiderScan');
             taskInputs.RecurseSpider = Task.getBoolInput('RecurseSpider');
             taskInputs.SubTreeOnly = Task.getBoolInput('SubtreeOnly');
-            taskInputs.MaxChildrenToCrawl = Task.getInput('MaxChildrenToCrawl');
-            taskInputs.ContextName = Task.getInput('ContextName');
+            taskInputs.MaxChildrenToCrawl = Task.getInput('MaxChildrenToCrawl')!;
+            taskInputs.ContextName = Task.getInput('ContextName')!;
 
             /* Active Scan Options inputs */
             taskInputs.ExecuteActiveScan = Task.getBoolInput('ExecuteActiveScan');
-            taskInputs.ContextId = Task.getInput('ContextId');
+            taskInputs.ContextId = Task.getInput('ContextId')!;
             taskInputs.Recurse = Task.getBoolInput('Recurse');
             taskInputs.InScopeOnly = Task.getBoolInput('InScopeOnly');
-            taskInputs.ScanPolicyName = Task.getInput('ScanPolicyName');
-            taskInputs.Method = Task.getInput('Method');
-            taskInputs.PostData = Task.getInput('PostData');
+            taskInputs.ScanPolicyName = Task.getInput('ScanPolicyName')!;
+            taskInputs.Method = Task.getInput('Method')!;
+            taskInputs.PostData = Task.getInput('PostData')!;
 
             /* Reporting options */
-            taskInputs.ReportType = Task.getInput('ReportType');
-            taskInputs.ReportFileDestination = Task.getPathInput('ReportFileDestination');
-            taskInputs.ReportFileName = Task.getInput('ReportFileName');
-            taskInputs.ProjectName = Task.getVariable('Build.Repository.Name');
-            taskInputs.BuildDefinitionName = Task.getVariable('Build.DefinitionName');
+            taskInputs.ReportType = Task.getInput('ReportType')!;
+            taskInputs.ReportFileDestination = Task.getPathInput('ReportFileDestination')!;
+            taskInputs.ReportFileName = Task.getInput('ReportFileName')!;
+            taskInputs.ProjectName = Task.getVariable('Build.Repository.Name')!;
+            taskInputs.BuildDefinitionName = Task.getVariable('Build.DefinitionName')!;
 
             /* Verification Options */
             taskInputs.EnableVerifications = Task.getBoolInput('EnableVerifications');
-            taskInputs.MaxHighRiskAlerts = parseInt(Task.getInput('MaxHighRiskAlerts'), 10);
-            taskInputs.MaxMediumRiskAlerts = parseInt(Task.getInput('MaxMediumRiskAlerts'), 10);
-            taskInputs.MaxLowRiskAlerts = parseInt(Task.getInput('MaxLowRiskAlerts'), 10);
+            taskInputs.MaxHighRiskAlerts = parseInt(Task.getInput('MaxHighRiskAlerts')!, 10);
+            taskInputs.MaxMediumRiskAlerts = parseInt(Task.getInput('MaxMediumRiskAlerts')!, 10);
+            taskInputs.MaxLowRiskAlerts = parseInt(Task.getInput('MaxLowRiskAlerts')!, 10);
 
             const apiHelper: ZapApiHelper = new ZapApiHelper(taskInputs);
             const requestService: RequestService = new RequestService();
@@ -160,7 +160,12 @@ async function run(): Promise<string> {
                 reject('A scan failed to complete.');
             }
         } catch (err) {
-            const errmsg: any = process.env.NODE_ENV === 'dev' ? err.stack + err.message : err.stack || err;
+            let errmsg: any;
+            if (err instanceof Error) {
+                errmsg = process.env.NODE_ENV === 'dev' ? err.stack + err.message : err.stack || err;
+            } else {
+                errmsg = String(err);
+            }
             reject(errmsg);
         }
     });

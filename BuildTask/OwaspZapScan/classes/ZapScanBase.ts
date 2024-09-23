@@ -1,4 +1,4 @@
-import * as Task from 'vsts-task-lib';
+import * as Task from 'azure-pipelines-task-lib';
 import * as Request from 'request';
 import * as RequestPromise from 'request-promise';
 // tslint:disable-next-line:no-require-imports
@@ -12,10 +12,10 @@ import { TaskInput } from './TaskInput';
 import { Constants } from './Constants';
 
 export abstract class ZapScanBase implements IZapScan {
-    zapScanType: ZapScanType;
-    scanType: string;
+    zapScanType!: ZapScanType;
+    scanType!: string;
     continueOnUrlError?: string;
-    requestOptions: Request.UriOptions & RequestPromise.RequestPromiseOptions;
+    requestOptions!: Request.UriOptions & RequestPromise.RequestPromiseOptions;
     protected taskInputs: TaskInput;
 
     constructor(taskInputs: TaskInput) {

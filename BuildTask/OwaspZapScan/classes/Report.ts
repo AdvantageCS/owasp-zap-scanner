@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as Task from 'vsts-task-lib';
+import * as Task from 'azure-pipelines-task-lib';
 import * as Request from 'request';
 import * as RequestPromise from 'request-promise';
 import * as XmlParser from 'xmljson';

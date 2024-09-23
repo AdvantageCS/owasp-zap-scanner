@@ -1,7 +1,7 @@
 import { TaskInput } from './TaskInput';
 import * as RequestPromise from 'request-promise';
 import * as Request from 'request';
-import * as Task from 'vsts-task-lib';
+import * as Task from 'azure-pipelines-task-lib';
 
 export class ZapApiHelper {
     protected taskInputs: TaskInput;

@@ -1,4 +1,4 @@
-import * as Task from 'vsts-task-lib';
+import * as Task from 'azure-pipelines-task-lib';
 
 import { ReportType } from './../enums/Enums';
 import { Report } from './../classes/Report';

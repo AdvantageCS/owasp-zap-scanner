@@ -1,6 +1,6 @@
 export class TaskInput {
     /* Required */
-    private _zapApiKey: string;
+    private _zapApiKey!: string;
     set ZapApiKey(value: string) {
         this._zapApiKey = value;
     }
@@ -14,7 +14,7 @@ export class TaskInput {
     }
 
 
-    private _zapApiUrl: string;
+    private _zapApiUrl!: string;
     set ZapApiUrl(value: string) {
         this._zapApiUrl = value;
     }
@@ -28,7 +28,7 @@ export class TaskInput {
     }
 
 
-    private _targetUrl: string;
+    private _targetUrl!: string;
     set TargetUrl(value: string) {
         this._targetUrl = value;
     }
@@ -41,7 +41,7 @@ export class TaskInput {
         throw new Error('The Target URL is required but not set.');
     }
 
-    private _newContext: boolean;
+    private _newContext!: boolean;
     set NewContext(value: boolean) {
         this._newContext = value;
     }
@@ -53,7 +53,7 @@ export class TaskInput {
         return false;
     }
 
-    private _clearSession: boolean;
+    private _clearSession!: boolean;
     set ClearSession(value: boolean) {
         this._clearSession = value;
     }
@@ -65,7 +65,7 @@ export class TaskInput {
         return false;
     }
 
-    private _newContextName: string;
+    private _newContextName!: string;
     set NewContextName(value: string) {
         this._newContextName = value;
     }
@@ -79,7 +79,7 @@ export class TaskInput {
 
 
     /* Open Api Scan */
-    private _executeOpenApiScan: boolean;
+    private _executeOpenApiScan!: boolean;
     set ExecuteOpenApiScan(value: boolean) {
         this._executeOpenApiScan = value;
     }
@@ -91,7 +91,7 @@ export class TaskInput {
         return false;
     }
 
-    private _openApiFile: string;
+    private _openApiFile!: string;
     set OpenApiFile(value: string) {
         this._openApiFile = value;
     }
@@ -103,7 +103,7 @@ export class TaskInput {
         return '';
     }
 
-    private _openApiUrl: string;
+    private _openApiUrl!: string;
     set OpenApiUrl(value: string) {
         this._openApiUrl = value;
     }
@@ -115,7 +115,7 @@ export class TaskInput {
         return '';
     }
 
-    private _openApiHostOverride: string;
+    private _openApiHostOverride!: string;
     set OpenApiHostOverride(value: string) {
         this._openApiHostOverride = value;
     }
@@ -127,7 +127,7 @@ export class TaskInput {
         return '';
     }
 
-    private _openApiContextId: string;
+    private _openApiContextId!: string;
     set OpenApiContextId(value: string) {
         this._openApiContextId = value;
     }
@@ -139,7 +139,7 @@ export class TaskInput {
     }
 
     
-    private _continueOnUrlError: string;
+    private _continueOnUrlError!: string;
     set ContinueOnUrlError(value: string) {
         this._continueOnUrlError = value;
     }
@@ -152,7 +152,7 @@ export class TaskInput {
     /* End Open Api Scan */
 
     /* Ajax Spider Scan */
-    private _executeAjaxSpiderScan: boolean;
+    private _executeAjaxSpiderScan!: boolean;
     set ExecuteAjaxSpiderScan(value: boolean) {
         this._executeAjaxSpiderScan = value;
     }
@@ -164,7 +164,7 @@ export class TaskInput {
         return false;
     }
 
-    private _ajaxSubTreeOnly: boolean;
+    private _ajaxSubTreeOnly!: boolean;
     set AjaxSubTreeOnly(value: boolean) {
         this._ajaxSubTreeOnly = value;
     }
@@ -176,7 +176,7 @@ export class TaskInput {
         return false;
     }
 
-    private _ajaxContextName: string;
+    private _ajaxContextName!: string;
     set AjaxContextName(value: string) {
         this._ajaxContextName = value;
     }
@@ -188,7 +188,7 @@ export class TaskInput {
         return '';
     }
 
-    private _ajaxInScope: boolean;
+    private _ajaxInScope!: boolean;
     set AjaxInScope(value: boolean) {
         this._ajaxInScope = value;
     }
@@ -202,7 +202,7 @@ export class TaskInput {
     /* End Ajax Spider Scan*/
 
     /* Spider Scan */
-    private _executeSpiderScan: boolean;
+    private _executeSpiderScan!: boolean;
     set ExecuteSpiderScan(value: boolean) {
         this._executeSpiderScan = value;
     }
@@ -214,7 +214,7 @@ export class TaskInput {
         return false;
     }
 
-    private _recurseSpider: boolean;
+    private _recurseSpider!: boolean;
     set RecurseSpider(value: boolean) {
         this._recurseSpider = value;
     }
@@ -227,7 +227,7 @@ export class TaskInput {
     }
 
 
-    private _subTreeOnly: boolean;
+    private _subTreeOnly!: boolean;
     set SubTreeOnly(value: boolean) {
         this._subTreeOnly = value;
     }
@@ -240,7 +240,7 @@ export class TaskInput {
     }
 
 
-    private _maxChildrenToCrawl: string;
+    private _maxChildrenToCrawl!: string;
     set MaxChildrenToCrawl(value: string) {
         this._maxChildrenToCrawl = value;
     }
@@ -253,7 +253,7 @@ export class TaskInput {
     }
 
 
-    private _contextName: string;
+    private _contextName!: string;
     set ContextName(value: string) {
         this._contextName = value;
     }
@@ -267,7 +267,7 @@ export class TaskInput {
 
 
     /* Active Scan */
-    private _executeActiveScan: boolean;
+    private _executeActiveScan!: boolean;
     set ExecuteActiveScan(value: boolean) {
         this._executeActiveScan = value;
     }
@@ -280,7 +280,7 @@ export class TaskInput {
     }
 
 
-    private _contextId: string;
+    private _contextId!: string;
     set ContextId(value: string) {
         this._contextId = value;
     }
@@ -293,7 +293,7 @@ export class TaskInput {
     }
 
 
-    private _recurse: boolean;
+    private _recurse!: boolean;
     set Recurse(value: boolean) {
         this._recurse = value;
     }
@@ -306,7 +306,7 @@ export class TaskInput {
     }
 
 
-    private _inScopeOnly: boolean;
+    private _inScopeOnly!: boolean;
     set InScopeOnly(value: boolean) {
         this._inScopeOnly = value;
     }
@@ -319,7 +319,7 @@ export class TaskInput {
     }
 
 
-    private _scanPolicyName: string;
+    private _scanPolicyName!: string;
     set ScanPolicyName(value: string) {
         this._scanPolicyName = value;
     }
@@ -332,7 +332,7 @@ export class TaskInput {
     }
 
 
-    private _method: string;
+    private _method!: string;
     set Method(value: string) {
         this._method = value;
     }
@@ -345,7 +345,7 @@ export class TaskInput {
     }
 
 
-    private _postData: string;
+    private _postData!: string;
     set PostData(value: string) {
         this._postData = value;
     }
@@ -360,7 +360,7 @@ export class TaskInput {
 
 
     /* Reporting */
-    private _reportType: string;
+    private _reportType!: string;
     set ReportType(value: string) {
         this._reportType = value;
     }
@@ -373,7 +373,7 @@ export class TaskInput {
     }
 
 
-    private _reportFileDestination: string;
+    private _reportFileDestination!: string;
     set ReportFileDestination(value: string) {
         this._reportFileDestination = value;
     }
@@ -386,7 +386,7 @@ export class TaskInput {
     }
 
 
-    private _reportFileName: string;
+    private _reportFileName!: string;
     set ReportFileName(value: string) {
         this._reportFileName = value;
     }
@@ -399,7 +399,7 @@ export class TaskInput {
     }
 
 
-    private _projectName: string;
+    private _projectName!: string;
     set ProjectName(value: string) {
         this._projectName = value;
     }
@@ -412,7 +412,7 @@ export class TaskInput {
     }
 
 
-    private _buildDefinitionName: string;
+    private _buildDefinitionName!: string;
     set BuildDefinitionName(value: string) {
         this._buildDefinitionName = value;
     }
@@ -427,7 +427,7 @@ export class TaskInput {
 
 
     /* Verification */
-    private _enableVerifications: boolean;
+    private _enableVerifications!: boolean;
     set EnableVerifications(value: boolean) {
         this._enableVerifications = value;
     }
@@ -440,7 +440,7 @@ export class TaskInput {
     }
 
 
-    private _maxHighRiskAlerts: number;
+    private _maxHighRiskAlerts!: number;
     set MaxHighRiskAlerts(value: number) {
         this._maxHighRiskAlerts = value;
     }
@@ -453,7 +453,7 @@ export class TaskInput {
     }
 
 
-    private _maxMediumRiskAlerts: number;
+    private _maxMediumRiskAlerts!: number;
     set MaxMediumRiskAlerts(value: number) {
         this._maxMediumRiskAlerts = value;
     }
@@ -466,7 +466,7 @@ export class TaskInput {
     }
 
 
-    private _maxLowRiskAlerts: number;
+    private _maxLowRiskAlerts!: number;
     set MaxLowRiskAlerts(value: number) {
         this._maxLowRiskAlerts = value;
     }
