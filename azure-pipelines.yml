@@ -5,7 +5,7 @@
 
 name: $(MajorVersion).$(MinorVersion).$(Rev:r)
 variables:
-  MajorVersion: 2
+  MajorVersion: 1
   MinorVersion: 0
 
 trigger:
@@ -17,22 +17,10 @@ pr:
 - master
 
 pool:
-  vmImage: 'vs2017-win2016'
+  vmImage: 'windows-latest'
   demands: npm
 
-steps:
-- task: SonarSource.sonarcloud.111111111111.SonarCloudPrepare@1
-  displayName: 'Prepare Analysis on SonarCloud'
-  inputs:
-    SonarCloud: SonarCloudConnection
-    organization: 'pablosguajardo-github'
-    scannerMode: CLI
-    configMode: manual
-    cliProjectKey: 'pablosguajardo_owasp-zap-scanner'
-    cliProjectName: 'owasp-zap-scanner '
-    cliProjectVersion: '$(Build.BuildNumber)'
-    cliSources: BuildTask
-    
+steps:   
 - task: Npm@1
   displayName: 'npm install'
   inputs:
@@ -44,16 +32,6 @@ steps:
     command: custom
     verbose: false
     customCommand: 'run build'
-    
-- task: Npm@1
-  displayName: 'npm test'
-  inputs:
-    command: custom
-    verbose: false
-    customCommand: 'npm '
-
-- task: SonarSource.sonarcloud.ce11111111111111.SonarCloudAnalyze@1
-  displayName: 'Run Code Analysis'
     
 - task: CopyFiles@2
   displayName: 'Copy Task Manifest, Markdown & Marketplace Icon'

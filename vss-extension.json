@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "owasp-zap-scan-acs",
-    "name": "Owasp Zap Scan",
+    "name": "OWASP ZAP Scan",
     "publisher": "AdvantageCS",
     "version": "#{Version}",
     "public": true,
@@ -10,7 +10,7 @@
             "id": "Microsoft.VisualStudio.Services"
         }
     ],    
-    "description": "Owasp Zap Scan",
+    "description": "OWASP ZAP Scan",
     "categories": [
         "Azure Pipelines"
     ],
@@ -73,7 +73,7 @@
     ],
     "contributions": [
         {
-            "id": "owasp-zap-scan",
+            "id": "owasp-zap-scan-acs",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"

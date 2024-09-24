@@ -1,7 +1,7 @@
 {
   "name": "owasp-zap-scan",
-  "version": "0.0.1",
-  "description": "Owasp Zap Scanning in Visual Studio Team Services for Build & Release",
+  "version": "1.0.0",
+  "description": "OWASP ZAP scanning task for Azure DevOps (AdvantageCS)",
   "main": "dist\\BuildTask\\OwaspZapScan\\owaspzapscan.js",
   "scripts": {
     "commit": "git cz",
