@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
     "id": "8731c461-7434-4c1a-8871-da7ac3ccad4d",
     "name": "OwaspZapScan",
     "friendlyName": "OWASP ZAP Scan",
@@ -15,9 +16,9 @@
     ],
     "author": "AdvantageCS",
     "version": {
-        "Major": "1",
-        "Minor": "0",
-        "Patch": "2"
+        "Major": 1,
+        "Minor": 0,
+        "Patch": 8
     },
     "demands": [],
     "minimumAgentVersion": "1.92.0",
@@ -388,6 +389,14 @@
     ],
     "instanceNameFormat": "OWASP ZAP Scan",
     "execution": {
+        "Node10": {
+            "target": "owaspzapscan.js",
+            "argumentFormat": ""
+        },
+        "Node16": {
+            "target": "owaspzapscan.js",
+            "argumentFormat": ""
+        },
         "Node20_1": {
             "target": "owaspzapscan.js",
             "argumentFormat": ""

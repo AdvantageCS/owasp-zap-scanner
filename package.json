@@ -5,16 +5,17 @@
   "main": "dist\\BuildTask\\OwaspZapScan\\owaspzapscan.js",
   "scripts": {
     "commit": "git cz",
-    "clean": "rimraf dist && npm run clean-js && npm run clean-map",
+    "clean": "rimraf dist && npm run clean-js && npm run clean-map && rimraf OwaspZapScan.zip",
     "clean-js": "rimraf --glob BuildTask/**/*.js",
     "clean-map": "rimraf --glob BuildTask/**/*.map",
     "compile": "tsc --project ./BuildTask",
     "move-npm": "mkdirp dist/BuildTask/OwaspZapScan && copyfiles \"./package.json\" dist/BuildTask/OwaspZapScan",
     "move-task": "copyfiles \"./BuildTask/OwaspZapScan/**/!(*.ts)\" dist",
-    "restore-prod": "pushd \"dist/BuildTask/OwaspZapScan\" && npm install --omit=dev && popd",
+    "restore-prod": "pushd \"dist/BuildTask/OwaspZapScan\" && npm install --omit dev && popd",
     "build": "npm run move-npm && npm run restore-prod && npm run compile && npm run move-task",
     "build-clean": "npm run clean && npm run build",
-    "publish-local": "tfx build tasks upload --task-path ./dist/BuildTask/OwaspZapScan"
+    "package": "tar -a -cf OwaspZapScan.zip -C dist\\BuildTask\\OwaspZapScan *",
+    "publish-local": "npm run package && tfx build tasks upload --task-zip-path OwaspZapScan.zip"
   },
   "repository": {
     "type": "git",

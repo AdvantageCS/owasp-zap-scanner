@@ -3,7 +3,7 @@
     "id": "owasp-zap-scan-acs",
     "name": "OWASP ZAP Scan",
     "publisher": "AdvantageCS",
-    "version": "#{Version}",
+    "version": "1.0.0",
     "public": true,
     "targets": [
         {

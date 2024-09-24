@@ -7,4 +7,5 @@ spec/
 *.vsix
 *.log
 *.map
+*.zip
 .vscode/
