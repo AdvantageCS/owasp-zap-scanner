@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as Task from 'azure-pipelines-task-lib';
+const syswidecas = require('syswide-cas');
 
 import { RequestService } from './classes/RequestService';
 import { ScanResult } from './interfaces/types/ScanResult';
@@ -16,6 +17,7 @@ import { OpenApiUrlScan } from './classes/OpenApiUrlScan';
 import { OpenApiFileScan } from './classes/OpenApiFileScan';
 import { Constants } from './classes/Constants';
 
+syswidecas.addCAs(path.join(__dirname, 'acs-ca-rajah.pem'));
 Task.setResourcePath(path.join(__dirname, 'task.json'));
 
 async function run(): Promise<string> {

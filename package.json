@@ -41,6 +41,7 @@
     "request-promise": "^4.2.6",
     "thread-sleep": "^2.2.0",
     "azure-pipelines-task-lib": "^4.17.2",
+    "syswide-cas": "^5.3.0",
     "xmljson": "^0.2.0"
   },
   "devDependencies": {
