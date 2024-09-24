@@ -30,7 +30,7 @@
     "attack-proxy",
     "web-security"
   ],
-  "author": "PSG",
+  "author": "AdvantageCS",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AdvantageCS/owasp-zap-scanner/issues"
@@ -44,18 +44,13 @@
     "xmljson": "^0.2.0"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.10",
-    "@types/dotenv": "^8.2.0",
-    "@types/node": "^20.0.0",
-    "@types/q": "^1.5.8",
+    "@types/node": "^20.3.1",
+    "@types/q": "^1.0.7",
     "@types/request": "^2.48.12",
     "@types/request-promise": "^4.1.51",
     "copyfiles": "^2.4.1",
-    "dotenv": "^16.4.5",
     "mkdirp": "^3.0.1",
-    "q": "^1.5.1",
     "rimraf": "^6.0.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.6.2"
+    "typescript": "5.1.6"
   }
 }
