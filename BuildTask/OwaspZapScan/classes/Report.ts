@@ -42,13 +42,11 @@ export class Report {
     }
 
     GetScanResults(type: ReportType): Promise<string> {
-        let reportType: string = 'xmlreport';
+        let reportType: string = Constants.HTML_REPORT;
 
         /* Set report type */
         if (type === ReportType.XML) { reportType = Constants.XML_REPORT; }
-        if (type === ReportType.HTML) { reportType = Constants.HTML_REPORT; }
         if (type === ReportType.MD) { reportType = Constants.MD_REPORT; }
-        if (type === ReportType.ALL) { reportType = Constants.ALL_REPORT; }
 
         this._requestOptions.uri = `${this._requestOptions.uri}/${reportType}/`;
 
@@ -67,10 +65,8 @@ export class Report {
             type = ReportType.XML;
         } else if (this._taskInputs.ReportType === Constants.MARKDOWN) {
             type = ReportType.MD;
-        } else if (this._taskInputs.ReportType === Constants.HTML) {
-            type = ReportType.HTML;
         } else {
-            type = ReportType.ALL;
+            type = ReportType.HTML;
         }
         return this.GenerateReportInternal(type);
     }
@@ -86,15 +82,6 @@ export class Report {
             ext = Constants.XML;
         } else if (type === ReportType.MD) {
             ext = Constants.MARKDOWN;
-        } else if (type === ReportType.ALL) {
-            const allTypes = [ReportType.XML, ReportType.HTML, ReportType.MD];
-            for (const t of allTypes) {
-                const reportok = await this.GenerateReportInternal(t);
-                if (reportok === false) {
-                    return false;
-                }
-            }
-            return true;
         }
 
         const fullFilePath: string = path.normalize(`${destination}/${fileName}.${ext}`);
@@ -105,16 +92,7 @@ export class Report {
             console.log(`Report Filename: ${fullFilePath}`);
         }
 
-        if (type === ReportType.HTML) {
-            /* Get the Scan Result */
-            const xmlResult: string = await this.GetScanResults(ReportType.XML);
-            /* Sort and Count the Alerts */
-            const processedAlerts: AlertResult = this._helper.ProcessAlerts(xmlResult, this._taskInputs.TargetUrl);
-            /* Generate the Custom HTML Report */
-            scanReport = this.createCustomHtmlReport(processedAlerts);
-        } else {
-            scanReport = await this.GetScanResults(type);
-        }
+        scanReport = await this.GetScanResults(type);
 
         /* Write the File */
         return new Promise<boolean>((resolve, reject) => {

@@ -18,7 +18,7 @@
     "version": {
         "Major": 1,
         "Minor": 0,
-        "Patch": 8
+        "Patch": 9
     },
     "demands": [],
     "minimumAgentVersion": "1.92.0",
@@ -363,8 +363,7 @@
             "options": {
                 "html": "HTML Report",
                 "xml": "XML Report",
-                "md": "Markdown Report",
-                "all": "All Reports"
+                "md": "Markdown Report"
             },
             "defaultValue": "html"
         },
