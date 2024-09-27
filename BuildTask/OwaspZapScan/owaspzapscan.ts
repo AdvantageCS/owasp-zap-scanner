@@ -95,7 +95,6 @@ async function run(): Promise<string> {
             if (process.env.NODE_ENV === 'dev') {
                 console.log(`OpenApiUrl: ${taskInputs.OpenApiUrl} OpenApiFile: ${taskInputs.OpenApiFile}`);
             }
-            const report: Report = new Report(helper, requestService, taskInputs);
 
             const selectedScans: Array<IZapScan> = new Array<IZapScan>();
             let scanStatus: ScanResult = { Success: false };
@@ -146,13 +145,14 @@ async function run(): Promise<string> {
             if (scanStatus.Success) {
                 /* Generate the report */
                 console.log('Generating the report...');
+                const report: Report = new Report(helper, requestService, taskInputs);
                 const isSuccess: boolean = await report.GenerateReport();
 
                 if (!isSuccess) {
                     hasIssues = isSuccess;
                 }
                 /* Perform the Verifications and Print the report */
-                const verify: Verify = new Verify(helper, report, taskInputs);
+                const verify: Verify = new Verify(helper, new Report(helper, requestService, taskInputs), taskInputs);
                 verify.Assert();
 
                 resolve(`Owasp Zap Active Scan ${hasIssues ? 'Partially' : ''} Completed. Result is within the expected thresholds.`);
