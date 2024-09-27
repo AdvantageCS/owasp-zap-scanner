@@ -9,3 +9,6 @@ spec/
 *.map
 *.zip
 .vscode/
+
+/.taskkey
+/OWASP-Zap-Report.*
