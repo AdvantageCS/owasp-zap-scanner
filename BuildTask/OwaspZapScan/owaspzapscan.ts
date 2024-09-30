@@ -151,6 +151,9 @@ async function run(): Promise<string> {
                 if (!isSuccess) {
                     hasIssues = isSuccess;
                 }
+
+                await apiHelper.PrintStats();
+
                 /* Perform the Verifications and Print the report */
                 const verify: Verify = new Verify(helper, new Report(helper, requestService, taskInputs), taskInputs);
                 verify.Assert();

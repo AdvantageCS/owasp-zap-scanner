@@ -79,4 +79,34 @@ export class ZapApiHelper {
                 });
         });
     }
+
+    PrintStats(): Promise<void> {
+        const requestOptions: Request.UriOptions & RequestPromise.RequestPromiseOptions = {
+            // tslint:disable-next-line:no-http-string
+            uri: `${this.taskInputs.ZapApiUrl}/JSON/stats/view/stats/`,
+            qs: {
+                zapapiformat: 'JSON',
+                apikey: this.taskInputs.ZapApiKey,
+                formMethod: 'GET'
+            }
+        };
+
+        console.log('Getting ZAP session stats...');
+        Task.debug(`ZAP API Call: ${requestOptions.uri} | Request Options: ${JSON.stringify(requestOptions.qs)}`);
+        return new Promise<void>((resolve, reject) => {
+            RequestPromise(requestOptions)
+                .then((res: any) => {
+                    Task.debug(`Status Result: ${JSON.stringify(res)}`);
+                    const stats = JSON.parse(res);
+                    Object.keys(stats).forEach(key =>
+                        {
+                            console.log(`${key}: ${stats[key as keyof object]}`);
+                        });
+                    resolve();
+                })
+                .catch((err: any) => {
+                    reject(err.message || err);
+                });
+        });
+    }
 }
